@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'haml', '~> 4.0.5'
 gem "haml-rails", "~> 0.9"
 gem "paperclip", "~> 5.0.0"
+gem "simple_form", "~> 3.1.0"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
