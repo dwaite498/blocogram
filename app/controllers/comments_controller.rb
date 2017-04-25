@@ -6,8 +6,10 @@ before_action :set_post
     @comment.user_id = current_user.id
     
     if @comment.save
-      flash[:success] = "Comment created successfully"
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       flash[:alert] = "Error creating comment."
       render root_path
@@ -17,9 +19,12 @@ before_action :set_post
   def destroy
     @comment = @post.comments.find(params[:id])
     
-    @comment.destroy
-    flash[:success] = "comment deleted successfully"
-    redirect_to root_path
+    if comment.user.id == current_user.id
+    @comment.delete
+    respond_to di |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
   
   private
